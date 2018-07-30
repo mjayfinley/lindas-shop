@@ -16,12 +16,9 @@ class Products extends Component {
       return (
         <li key={product.id}>
           <h2>{product.product_name}</h2>
-          <p>{product.description}</p>
+          <img src={product.image1} alt="1" />
           <p>${product.price}</p>
-          <img src={product.image1} alt="image 1" />
-          <img src={product.image2} alt="image 2" />
-          <img src={product.image3} alt="image 3" />
-          <button onClick={() => {this.props.addProductToCart(product)}}>Add to Cart</button>
+          <button onClick={() => {this.props.showProductDetails(product)}}>Details</button>
         </li>
       )
     })
