@@ -13,6 +13,7 @@ import product from './store/reducers/product';
 import Products from './components/Products';
 import Cart from './components/Cart';
 import ItemDetails from './components/ItemDetails';
+import AddProduct from './components/AddProduct';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -31,6 +32,7 @@ ReactDOM.render(
           <Route exact path = '/' component = {Products} />
           <Route path = '/itemdetails' component = {ItemDetails} />
           <Route path = '/cart' component = {Cart} />
+          <Route path = '/addproduct' component = {AddProduct} />
         </Switch>
       </App>
     </Provider>

@@ -8,6 +8,8 @@ export class Menu extends Component {
         <div><h1>Linda's Shop</h1></div>
         <div><NavLink exact to = '/'>Products</NavLink></div>
         <div><NavLink to = '/cart'>Cart</NavLink></div>
+
+        <div><NavLink to = '/addproduct'>Add Product</NavLink></div>
       </div>
     )
   }
