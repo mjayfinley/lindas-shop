@@ -12,13 +12,24 @@ import product from './store/reducers/product';
 
 import Products from './components/Products';
 import Cart from './components/Cart';
+import ItemDetails from './components/ItemDetails';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const rootReducer = combineReducers({
+  productReducer : product,
+  cartReducer : cart,
+})
+
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider >
+    <Provider store={store}>
       <App>
         <Switch>
           <Route exact path = '/' component = {Products} />
+          <Route path = '/itemdetails' component = {ItemDetails} />
           <Route path = '/cart' component = {Cart} />
         </Switch>
       </App>
