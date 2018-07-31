@@ -10,29 +10,35 @@ class ItemDetails extends Component {
 
   render() {
 
-    console.log(this.props.item)
-
     let listItem = this.props.item.map((product) => {
       return (
-        <li key={product.id}>
-          <h2>{product.product_name}</h2>
-          <p>{product.description}</p>
-          <p>${product.price}</p>
-          <img src={product.image1} alt="1"/>
-          <img src={product.image2} alt="2"/>
-          <img src={product.image3} alt="3"/>
-
+        <div className='thumbnail'>
+          <div className='row'>
+            <div className='col-md-6'>
+              <img src={product.image1} alt={product.product_name}/>
+            </div>
+          </div>
+          <div className='caption-full'>
+            <h4 className='pull-right'>${product.price}</h4>
+            <h4>{product.product_name}</h4>
+            <p>{product.description}</p>
+          </div>
           <button onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
-        </li>
+        </div>
       )
     })
 
     return(
-      <div id="product-details">
-
-        <h1>Item Details</h1>
-        <ul>{listItem}</ul>
-
+      <div className="view-container">
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-9'>
+              {listItem}
+            </div>
+            <div className='col-md-3'>
+            </div>
+          </div>
+        </div>
       </div>
     )
   }

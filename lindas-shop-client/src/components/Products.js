@@ -15,19 +15,25 @@ class Products extends Component {
 
     let productList = this.props.products.map((product) => {
       return (
-        <li key={product.id}>
-          <h2>{product.product_name}</h2>
-          <img src={product.image1} alt="1" />
-          <p>${product.price}</p>
-          <button onClick={() => {this.props.showProductDetails(product)}}><Link to = '/itemdetails'>Details</Link></button>
-        </li>
+        <div className='col-sm-4 col-lg-4 col-md-4 book-list' key={product.id}>
+          <div className="thumbnail">
+            <img className="img-thumbnail" src={product.image1} alt="1" />
+            <div className='caption'>
+              <h4 className="pull-right">${product.price}</h4>
+              <h4>{product.product_name}</h4>
+              <button className='itemButton btn btn-primary' onClick={() => {this.props.showProductDetails(product)}}><Link to = '/itemdetails'>Details</Link></button>
+            </div>
+          </div>
+        </div>
       )
     })
 
     return(
-      <div id="products">
+      <div>
         <h1>Products</h1>
-        <ul>{productList}</ul>
+        <div className='books row'>
+          {productList}
+        </div>
       </div>
     )
   }
@@ -43,7 +49,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPopulateProducts : () => dispatch(actionCreators.populateProductsUsingThunk()),
 
-    showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product))
+    showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product)),
+
   }
 }
 
