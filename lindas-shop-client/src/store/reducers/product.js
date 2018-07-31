@@ -2,7 +2,8 @@ import * as actionTypes from '../actionTypes'
 
 const initialState = {
   products : [],
-  item : []
+  item : [],
+  pageOfItems : []
 }
 
 const reducer = (state = initialState, action) => {
@@ -25,6 +26,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         item : action.product
     }
+
+    case actionTypes.LOAD_MORE_PRODUCTS:
+      return {
+        ...state,
+        pageOfItems : action.pageOfItems 
+
+      }
 
   }
 

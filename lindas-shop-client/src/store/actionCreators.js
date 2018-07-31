@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes'
+import * as actionCreators from './actionCreators.js'
 
 export const populateProductsUsingThunk = () => {
   return (dispatch) => {
@@ -28,6 +29,17 @@ export const addProductUsingThunk = (product) => {
   }
 }
 
+export const loadFirstPage = () => {
+  return (dispatch) => {
+
+    fetch("http://localhost:3001/products")
+    .then(response => response.json())
+    .then((json) => {
+      dispatch(actionCreators.onChangePage(json.slice(0, 6)))
+    })
+  }
+}
+
 export const showProductDetails = (product) => {
   return {
     type : actionTypes.SHOW_PRODUCT_DETAILS,
@@ -46,5 +58,21 @@ export const deleteItem = (product) => {
   return {
     type: actionTypes.DELETE_PRODUCT_FROM_CART,
     product : product
+  }
+}
+
+export const onChangePage = (pageOfItems) => {
+  return {
+    type: actionTypes.LOAD_MORE_PRODUCTS,
+    pageOfItems : pageOfItems
+
+  }
+}
+
+export const onPageLoad = (firstPageItems) => {
+  return {
+    type: actionTypes.POPULATE_PRODUCTS,
+    products : firstPageItems
+
   }
 }

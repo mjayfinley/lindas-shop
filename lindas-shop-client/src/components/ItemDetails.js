@@ -10,12 +10,18 @@ class ItemDetails extends Component {
 
   render() {
 
+
     let listItem = this.props.item.map((product) => {
       return (
-        <div className='thumbnail'>
+        <div className='thumbnail' key={product.id}>
           <div className='row'>
             <div className='col-md-6'>
-              <img src={product.image1} alt={product.product_name}/>
+
+              <img className='img-thumbnail' src={product.image1} alt={product.product_name}/>
+            </div>
+            <div className='col-md-6'>
+              <img className='img-thumbnail' src={product.image2} alt='image2' />
+              <img className='img-thumbnail' src={product.image3} alt='image3'/>
             </div>
           </div>
           <div className='caption-full'>
@@ -23,7 +29,7 @@ class ItemDetails extends Component {
             <h4>{product.product_name}</h4>
             <p>{product.description}</p>
           </div>
-          <button className='btn btn-primary' onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
+          <button className='btn btn-primary pull-right' onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
         </div>
       )
     })
