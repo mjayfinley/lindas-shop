@@ -27,3 +27,24 @@ export const addProductUsingThunk = (product) => {
     })
   }
 }
+
+export const showProductDetails = (product) => {
+  return {
+    type : actionTypes.SHOW_PRODUCT_DETAILS,
+    product : product
+  }
+}
+
+export const addToCart = (product) => {
+  return {
+    type : actionTypes.ADD_PRODUCT_TO_CART,
+    product : product
+  }
+}
+
+export const deleteItem = (product) => {
+  return {
+    type: actionTypes.DELETE_PRODUCT_FROM_CART,
+    product : product
+  }
+}

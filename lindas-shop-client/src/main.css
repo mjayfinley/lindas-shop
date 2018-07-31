@@ -32,3 +32,8 @@ img {
   color: white;
   text-align: center;
 }
+
+button {
+  background-color: black;
+  color: white;
+}

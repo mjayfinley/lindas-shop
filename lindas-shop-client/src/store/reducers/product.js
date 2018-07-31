@@ -1,7 +1,8 @@
 import * as actionTypes from '../actionTypes'
 
 const initialState = {
-  products : []
+  products : [],
+  item : []
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +19,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         products : state.products.concat(action.product)
       }
+
+    case actionTypes.SHOW_PRODUCT_DETAILS:
+      return {
+        ...state,
+        item : action.product
+    }
+
   }
 
   return state

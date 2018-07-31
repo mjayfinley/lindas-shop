@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import * as actionCreators from '../store/actionCreators'
 
 
@@ -18,7 +19,7 @@ class Products extends Component {
           <h2>{product.product_name}</h2>
           <img src={product.image1} alt="1" />
           <p>${product.price}</p>
-          <button onClick={() => {this.props.showProductDetails(product)}}>Details</button>
+          <button onClick={() => {this.props.showProductDetails(product)}}><Link to = '/itemdetails'>Details</Link></button>
         </li>
       )
     })
@@ -41,6 +42,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onPopulateProducts : () => dispatch(actionCreators.populateProductsUsingThunk()),
+
+    showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product))
   }
 }
 
