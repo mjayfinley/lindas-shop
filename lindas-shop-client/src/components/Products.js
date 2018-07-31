@@ -21,7 +21,7 @@ class Products extends Component {
             <div className='caption'>
               <h4 className="pull-right">${product.price}</h4>
               <h4>{product.product_name}</h4>
-              <button className='itemButton btn btn-primary' onClick={() => {this.props.showProductDetails(product)}}><Link to = '/itemdetails'>Details</Link></button>
+              <button className='itemButton btn btn-primary' onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`}>Details</Link></button>
             </div>
           </div>
         </div>

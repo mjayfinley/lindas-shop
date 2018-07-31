@@ -23,7 +23,7 @@ class ItemDetails extends Component {
             <h4>{product.product_name}</h4>
             <p>{product.description}</p>
           </div>
-          <button onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
+          <button className='btn btn-primary' onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
         </div>
       )
     })

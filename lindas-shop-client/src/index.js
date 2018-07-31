@@ -30,7 +30,7 @@ ReactDOM.render(
       <App>
         <Switch>
           <Route exact path = '/' component = {Products} />
-          <Route path = '/itemdetails' component = {ItemDetails} />
+          <Route path = '/itemdetails/:id' component = {ItemDetails} />
           <Route path = '/cart' component = {Cart} />
           <Route path = '/addproduct' component = {AddProduct} />
         </Switch>
