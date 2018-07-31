@@ -10,7 +10,7 @@ class Cart extends Component {
       return (
         <li key={product.id}>
           <h2>{product.product_name}</h2>
-          <p>{product.price}</p>
+          <p>${product.price}</p>
           <button onClick={() => {this.props.onDeleteItem(product)}}>Delete Item</button>
         </li>
       )

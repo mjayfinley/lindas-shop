@@ -12,17 +12,17 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cart : state.cart.concat(action.product),
-        total : state.total += parseInt(action.product.price, 10)
+        total : state.total += Math.round(parseFloat((action.product.price)) * 100) /100
       }
 
     case actionTypes.DELETE_PRODUCT_FROM_CART:
       return {
         ...state,
         cart : state.cart.filter(product => product !== action.product),
-        total : state.total -= parseInt(action.product.price, 10)
+        total : state.total -= Math.round(parseFloat((action.product.price)) * 100) /100
     }
 
-  } 
+  }
   return state
 }
 
