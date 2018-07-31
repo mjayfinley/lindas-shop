@@ -34,7 +34,7 @@ class Cart extends Component {
 const mapStateToProps = (state) => {
   return {
     cart : state.cartReducer.cart,
-    total : state.cartReducer.total
+    total : Math.round(state.cartReducer.total * 100) /100
   }
 }
 
