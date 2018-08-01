@@ -6,13 +6,12 @@ const initialState = {
 }
 
 const reducer = (state = initialState, action) => {
-
   switch(action.type) {
     case actionTypes.ADD_PRODUCT_TO_CART:
       return {
         ...state,
         cart : state.cart.concat(action.product),
-        total : state.total += action.product.price 
+        total : state.total += action.product.price
       }
 
     case actionTypes.DELETE_PRODUCT_FROM_CART:

@@ -29,7 +29,7 @@ class ItemDetails extends Component {
             <h4>{product.product_name}</h4>
             <p>{product.description}</p>
           </div>
-          <button className='btn btn-primary pull-right' onClick={() => {this.props.addToCart(product)}}><Link to = '/cart'>Add to Cart</Link></button>
+
         </div>
       )
     })
@@ -42,7 +42,8 @@ class ItemDetails extends Component {
               {listItem}
             </div>
             <div className='col-md-3'>
-              <button><Link to = '/'>Continue Shopping</Link></button>
+              <button className='btn btn-primary pull-right' onClick={() => {this.props.addToCart(this.props.item[0])}}><Link to = '/cart'>Add to Cart</Link></button>
+              <button className='btn btn-primary pull-right'><Link to = '/'>Continue Shopping</Link></button>
             </div>
           </div>
         </div>
