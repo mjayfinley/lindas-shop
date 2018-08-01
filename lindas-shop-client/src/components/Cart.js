@@ -7,9 +7,9 @@ import * as actionCreators from '../store/actionCreators'
 class Cart extends Component {
   render() {
 
-    let cartList = this.props.cart.map((product) => {
+    let cartList = this.props.cart.map((product, index) => {
       return (
-        <li key={product.id}>
+        <li key={index}>
           <h2>{product.product_name}</h2>
           <p>${product.price}</p>
           <button onClick={() => {this.props.onDeleteItem(product)}}>Delete Item</button>
