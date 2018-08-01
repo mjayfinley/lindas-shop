@@ -18,9 +18,9 @@ class ItemDetails extends Component {
             <div className='col-md-6'>
 
               <img className='img-thumbnail' src={product.image1} alt={product.product_name}/>
+              <img className='img-thumbnail' src={product.image2} alt='image2' />
             </div>
             <div className='col-md-6'>
-              <img className='img-thumbnail' src={product.image2} alt='image2' />
               <img className='img-thumbnail' src={product.image3} alt='image3'/>
             </div>
           </div>
@@ -42,6 +42,7 @@ class ItemDetails extends Component {
               {listItem}
             </div>
             <div className='col-md-3'>
+              <button><Link to = '/'>Continue Shopping</Link></button>
             </div>
           </div>
         </div>

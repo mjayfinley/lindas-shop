@@ -60,7 +60,6 @@ const mapDispatchToProps = (dispatch) => {
 
     showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product)),
 
-    //loadMoreProducts : () => dispatch(actionCreators.loadMoreProducts()),
 
     onChangePage : (pageOfItems) => dispatch(actionCreators.onChangePage(pageOfItems))
   }

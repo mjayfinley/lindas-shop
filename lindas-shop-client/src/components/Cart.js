@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 import * as actionCreators from '../store/actionCreators'
 
@@ -24,6 +25,14 @@ class Cart extends Component {
 
         <div>
           Cart Total: ${this.props.total}
+        </div>
+
+        <div>
+          <button>Checkout</button>
+        </div>
+
+        <div>
+          <button><Link to = '/'>Continue Shopping</Link></button>
         </div>
 
       </div>

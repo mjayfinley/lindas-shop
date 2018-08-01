@@ -94,10 +94,6 @@ class Pagination extends Component {
   render() {
     var pager = this.state.pager;
 
-    // if (!pager.pages || pager.pages.length <= 1) {
-    //    return null;
-    // }
-
     return (
       <ul className="pagination">
         <li className={pager.currentPage === 1 ? 'disabled' : ''}>
