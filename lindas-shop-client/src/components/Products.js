@@ -4,6 +4,8 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as actionCreators from '../store/actionCreators'
 
+import Sidebar from './Sidebar'
+
 
 class Products extends Component {
 
@@ -19,23 +21,27 @@ class Products extends Component {
 
     let productList = this.props.pageOfItems.map((product) => {
       return (
-        <div className='col-sm-4 col-lg-4 col-md-4 book-list' key={product.id}>
-          <div className="thumbnail">
-            <img className="img-thumbnail" src={product.image1} alt="1" />
-            <div className='caption'>
-              <h4 className="pull-right">${product.price}</h4>
+        <div key={product.id}>
+          <div>
+            <img src={product.image1} alt="1" />
+            <div>
+              <h4 >${product.price}</h4>
               <h4>{product.product_name}</h4>
-              <button className='itemButton btn btn-primary pull-right' onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`}>Details</Link></button>
+              <button onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`}>Details</Link></button>
+              <button onClick={() => this.props.addToCart(product)}>Quick Add</button>
             </div>
           </div>
         </div>
       )
     })
 
+
     return(
       <div>
-        <h1>Products</h1>
-        <div className='books row'>
+        <div>
+          <Sidebar clase/>
+        </div>
+        <div>
           {productList}
         </div>
         <Pagination items={this.props.products} onChangePage={this.props.onChangePage.bind(this)} />
@@ -47,7 +53,9 @@ class Products extends Component {
 const mapStateToProps = (state) => {
   return {
     products : state.productReducer.products,
-    pageOfItems : state.productReducer.pageOfItems
+    pageOfItems : state.productReducer.pageOfItems,
+    cart : state.cartReducer.cart,
+    cartTotal : Math.round(state.cartReducer.total * 100) / 100
   }
 }
 
@@ -61,7 +69,9 @@ const mapDispatchToProps = (dispatch) => {
     showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product)),
 
 
-    onChangePage : (pageOfItems) => dispatch(actionCreators.onChangePage(pageOfItems))
+    onChangePage : (pageOfItems) => dispatch(actionCreators.onChangePage(pageOfItems)),
+
+    addToCart : (product) => dispatch(actionCreators.addToCart(product))
   }
 }
 

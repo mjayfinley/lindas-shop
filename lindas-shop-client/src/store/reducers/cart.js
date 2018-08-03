@@ -2,7 +2,8 @@ import * as actionTypes from '../actionTypes'
 
 const initialState = {
   cart : [],
-  total : 0.00
+  total : 0.00,
+  cartCount : 0
 }
 
 const reducer = (state = initialState, action) => {
@@ -11,18 +12,22 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cart : state.cart.concat(action.product),
-        total : state.total += action.product.price
+        total : state.total += action.product.price,
+        cartCount : state.cartCount += 1
       }
 
     case actionTypes.DELETE_PRODUCT_FROM_CART:
       return {
         ...state,
         cart : state.cart.filter(product => product !== action.product),
-        total : state.total -= action.product.price
-    }
+        total : state.total -= action.product.price,
+        cartCount : state.cartCount -= 1
+      }
+    default:
+      return state
 
   }
-  return state
+
 }
 
 export default reducer

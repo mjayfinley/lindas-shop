@@ -17,12 +17,14 @@ class Cart extends Component {
       )
     })
     return(
-      <div id="cart">
+      <div>
         <h1>Cart</h1>
 
         <ul>{cartList}</ul>
 
-
+        <div>
+          Total Items: {this.props.cartCount}
+        </div>
         <div>
           Cart Total: ${this.props.total}
         </div>
@@ -43,7 +45,8 @@ class Cart extends Component {
 const mapStateToProps = (state) => {
   return {
     cart : state.cartReducer.cart,
-    total : Math.round(state.cartReducer.total * 100) /100
+    total : Math.round(state.cartReducer.total * 100) /100,
+    cartCount: state.cartReducer.cartCount
   }
 }
 

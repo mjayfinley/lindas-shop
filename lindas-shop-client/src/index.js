@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import './main.css';
 import registerServiceWorker from './registerServiceWorker';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';

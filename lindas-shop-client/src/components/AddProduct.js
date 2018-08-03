@@ -27,7 +27,7 @@ class AddProduct extends Component {
 
   render() {
     return(
-      <div id="add-product">
+      <div>
         <h1>Add Product</h1>
 
         <input name="product_name" onChange={this.handleTextChange} type="text" placeholder="product name" />
