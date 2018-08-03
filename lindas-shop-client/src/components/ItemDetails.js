@@ -20,10 +20,6 @@ class ItemDetails extends Component {
             <div>
 
               <img src={product.image1} alt={product.product_name}/>
-              <img src={product.image2} alt='image2' />
-            </div>
-            <div >
-              <img src={product.image3} alt='image3'/>
             </div>
           </div>
           <div >

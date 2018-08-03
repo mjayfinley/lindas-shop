@@ -32,6 +32,7 @@ ReactDOM.render(
           <Route path = '/itemdetails/:id' component = {ItemDetails} />
           <Route path = '/cart' component = {Cart} />
           <Route path = '/addproduct' component = {AddProduct} />
+          <Route path = '/:category' component =  {Products}/>
         </Switch>
       </App>
     </Provider>

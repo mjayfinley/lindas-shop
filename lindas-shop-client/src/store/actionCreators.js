@@ -76,3 +76,19 @@ export const onPageLoad = (firstPageItems) => {
 
   }
 }
+
+export const filterForCategory = (category, products) => {
+  var filtered = products.filter((product) => {
+
+
+    if(product.category == category) {
+      return product
+
+    }
+  })
+  return {
+    type: actionTypes.FILTER_CATEGORY,
+    filtered : filtered
+
+  }
+}

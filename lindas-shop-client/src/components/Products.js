@@ -1,17 +1,18 @@
 import React, {Component} from 'react'
-import Pagination from './Pagination'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import * as actionCreators from '../store/actionCreators'
 
 import Sidebar from './Sidebar'
+import Categories from './Categories'
 
 
 class Products extends Component {
-
-  componentDidMount() {
+  constructor(props) {
+    super(props)
     this.props.onPopulateProducts()
-    this.props.loadFirstPage()
+
+
   }
 
 
@@ -19,7 +20,7 @@ class Products extends Component {
 
   render() {
 
-    let productList = this.props.pageOfItems.map((product) => {
+    let productList = this.props.products.map((product) => {
       return (
         <div key={product.id}>
           <div>
@@ -39,12 +40,12 @@ class Products extends Component {
     return(
       <div>
         <div>
-          <Sidebar clase/>
+          <Sidebar />
+          <Categories />
         </div>
         <div>
           {productList}
         </div>
-        <Pagination items={this.props.products} onChangePage={this.props.onChangePage.bind(this)} />
       </div>
     )
   }
@@ -53,7 +54,6 @@ class Products extends Component {
 const mapStateToProps = (state) => {
   return {
     products : state.productReducer.products,
-    pageOfItems : state.productReducer.pageOfItems,
     cart : state.cartReducer.cart,
     cartTotal : Math.round(state.cartReducer.total * 100) / 100
   }
@@ -63,13 +63,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onPopulateProducts : () => dispatch(actionCreators.populateProductsUsingThunk()),
 
-    loadFirstPage: () =>
-    dispatch(actionCreators.loadFirstPage()),
-
     showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product)),
 
 
-    onChangePage : (pageOfItems) => dispatch(actionCreators.onChangePage(pageOfItems)),
 
     addToCart : (product) => dispatch(actionCreators.addToCart(product))
   }

@@ -3,7 +3,7 @@ import * as actionTypes from '../actionTypes'
 const initialState = {
   products : [],
   item : [],
-  pageOfItems : [],
+
 }
 
 const reducer = (state = initialState, action) => {
@@ -26,13 +26,14 @@ const reducer = (state = initialState, action) => {
         ...state,
         item : action.product
     }
-
-    case actionTypes.LOAD_MORE_PRODUCTS:
+    case actionTypes.FILTER_CATEGORY:
       return {
         ...state,
-        pageOfItems : action.pageOfItems
-
+        products: action.filtered
       }
+    
+
+
     default:
       return state
 
