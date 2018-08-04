@@ -5,6 +5,15 @@ import {Link} from 'react-router-dom'
 import * as actionCreators from '../store/actionCreators'
 
 class Cart extends Component {
+
+  constructor(props) {
+    super(props)
+
+    this.props.populateCart()
+
+
+  }
+
   render() {
 
     let cartList = this.props.cart.map((product, index) => {
@@ -12,7 +21,7 @@ class Cart extends Component {
         <li key={index}>
           <h2>{product.product_name}</h2>
           <p>${product.price}</p>
-          <button onClick={() => {this.props.onDeleteItem(product)}}>Delete Item</button>
+          <button onClick={() =>  {this.props.onDeleteItem(product); this.props.deleteFrontEnd(product)}}>Delete Item</button>
         </li>
       )
     })
@@ -52,8 +61,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDeleteItem : (product) => dispatch(actionCreators.deleteItem(product))
+    onDeleteItem : (product) => dispatch(actionCreators.deleteItem(product)),
 
+    deleteFrontEnd : (product) => dispatch(actionCreators.deleteItemFrontEnd(product)),
+
+    populateCart : () => dispatch(actionCreators.populateCart()),
   }
 }
 

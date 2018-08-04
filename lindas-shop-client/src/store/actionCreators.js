@@ -29,6 +29,18 @@ export const addProductUsingThunk = (product) => {
   }
 }
 
+export const populateCart = () => {
+  return (dispatch) => {
+
+    fetch("http://localhost:3001/cart")
+    .then(response => response.json())
+    .then((json) => {
+      dispatch({type : actionTypes.POPULATE_CART, cart : json})
+    })
+  }
+}
+
+
 export const loadFirstPage = () => {
   return (dispatch) => {
 
@@ -48,18 +60,60 @@ export const showProductDetails = (product) => {
 }
 
 export const addToCart = (product) => {
+  return (dispatch) => {
+    fetch("http://localhost:3001/add-product-to-cart", {
+      method : "POST",
+      headers : {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(product)
+    })
+    .then(response => response.json())
+    .then((json) => {
+      console.log(json)
+      dispatch({type : actionTypes.ADD_PRODUCT_TO_CART, product : json})
+    })
+  }
+}
+
+export const addToCartFrontEnd = (product) => {
   return {
-    type : actionTypes.ADD_PRODUCT_TO_CART,
+    type: actionTypes.ADD_PRODUCT_TO_CART,
     product : product
   }
 }
 
 export const deleteItem = (product) => {
+  let cartId = product.id
+  const deleteProduct = {
+    cartId : cartId
+  }
+  return (dispatch) => {
+    fetch('http://localhost:3001/delete-product-from-cart/'+cartId, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body : JSON.stringify(deleteProduct)
+    })
+    .then(response => response.json())
+    .then((json) => {
+      dispatch(actionCreators.populateCart())
+    })
+  }
+
+}
+
+export const deleteItemFrontEnd = (product) => {
   return {
     type: actionTypes.DELETE_PRODUCT_FROM_CART,
     product : product
+
   }
 }
+
 
 export const onChangePage = (pageOfItems) => {
   return {

@@ -30,9 +30,36 @@ app.post('/add-product', (req,res) => {
   .then(() => res.send({message : "success"}))
 })
 
+app.get('/cart', (req,res) =>{
+  models.Cart.findAll().then(products => products = res.status(200).json(products))
+})
+
+app.post('/add-product-to-cart',(req,res) => {
+  let product = {
+    product_name : req.body.product_name,
+    price : req.body.price,
+    quantity : req.body.quantity
+  }
+
+  models.Cart.create(product)
+  .catch(function(err) {
+    console.log(err, product)
+  })
+})
+
+app.delete('/delete-product-from-cart/:cartId',(req,res) => {
+  let cartId = req.params.cartId
+  models.Cart.destroy({
+    where: {
+      id : cartId
+    }
+  }).then((results) => models.Cart.findAll())
+  .then(products => products = res.status(200).json(products))
+})
+
 app.delete('/product/:productId', (req,res) => {
   let productId = req.params.productId
-  models.Product.destory({
+  models.Product.destroy({
     where: {
       id : productId
     }

@@ -29,7 +29,7 @@ class Products extends Component {
               <h4 >${product.price}</h4>
               <h4>{product.product_name}</h4>
               <button onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`}>Details</Link></button>
-              <button onClick={() => this.props.addToCart(product)}>Quick Add</button>
+              <button onClick={() => {this.props.addToCart(product); this.props.addToCartFrontEnd(product)}}>Quick Add</button>
             </div>
           </div>
         </div>
@@ -65,9 +65,9 @@ const mapDispatchToProps = (dispatch) => {
 
     showProductDetails : (product) => dispatch(actionCreators.showProductDetails(product)),
 
+    addToCart : (product) => dispatch(actionCreators.addToCart(product)),
 
-
-    addToCart : (product) => dispatch(actionCreators.addToCart(product))
+    addToCartFrontEnd : (product) => dispatch(actionCreators.addToCartFrontEnd(product))
   }
 }
 
