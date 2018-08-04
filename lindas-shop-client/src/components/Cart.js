@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 
+import Payment from './Payment'
 import * as actionCreators from '../store/actionCreators'
 
 class Cart extends Component {
@@ -39,11 +40,12 @@ class Cart extends Component {
         </div>
 
         <div>
-          <button>Checkout</button>
+          <Payment />
         </div>
 
         <div>
           <button><Link to = '/'>Continue Shopping</Link></button>
+
         </div>
 
       </div>
