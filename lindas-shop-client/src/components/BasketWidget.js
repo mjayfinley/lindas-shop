@@ -7,9 +7,9 @@ class BasketWidget extends Component {
 
   render() {
     return(
-      <div>
-        <div>
-          <Link to='/cart'><i/><span>{this.props.cartCount} items(s) - ${this.props.total}</span></Link>
+      <div className='cart'>
+        <div className='dropdown'>
+          <Link to='/cart' className='btn btn-inverse btn-block btn-lg'><i className='fa fa-fa-shopping-cart'/><span>{this.props.cartCount} items(s) - ${this.props.total}</span></Link>
         </div>
       </div>
     )

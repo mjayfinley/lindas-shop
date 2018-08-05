@@ -25,6 +25,7 @@ export const addProductUsingThunk = (product) => {
     .then(response => response.json())
     .then((json) => {
       dispatch({type : actionTypes.ADD_PRODUCT, product : json})
+    
     })
   }
 }
@@ -71,7 +72,6 @@ export const addToCart = (product) => {
     })
     .then(response => response.json())
     .then((json) => {
-      console.log(json)
       dispatch({type : actionTypes.ADD_PRODUCT_TO_CART, product : json})
     })
   }

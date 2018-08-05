@@ -20,24 +20,18 @@ class Categories extends Component {
 
     let categoryList = categories.map((category, index) => {
       return (
-        <li key={index}>
-          <button onClick={() => this.props.filterForCategory(category, this.props.products)}>
-            <Link to={`/${category}`}>{category}</Link>
-          </button>
-        </li>
+        <button key={index} className='list-group-item list-group-item-action' onClick={() => this.props.filterForCategory(category, this.props.products)}><Link to={`/${category}`}>{category}</Link>
+        </button>
+
       )
     })
 
 
     return(
-      <div>
-        <div>
-          <button onClick={() => this.props.onPopulateProducts()}><Link to='/'>All</Link></button>
+        <div className='list-group center-list-items'>
+          <button className='list-group-item list-group-item-action' onClick={() => this.props.onPopulateProducts()}><Link to='/'>All</Link></button>
+          {categoryList}
         </div>
-        <div>
-          <ul>{categoryList}</ul>
-        </div>
-      </div>
     )
   }
 }

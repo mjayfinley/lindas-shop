@@ -4,13 +4,26 @@ import {NavLink} from 'react-router-dom'
 export class Menu extends Component {
   render() {
     return(
-      <div>
-        <div><h1>Linda's Shop</h1></div>
-        <div><NavLink exact to = '/'>Products</NavLink></div>
-        <div><NavLink to = '/cart'>Cart</NavLink></div>
+      <nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
+        <NavLink exact to ='/' className='navbar-brand'>Lindas Shop</NavLink>
+        <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarSupportedContent' aria-controls='navbarSupportedContent' aria-expanded='false' aria-label='Toggle navigation'>
+          <span className='navbar-toggler-icon'></span>
+        </button>
 
-        <div><NavLink to = '/addproduct'>Add Product</NavLink></div>
-      </div>
+        <div className='collapse navbar-collapse' id='navbarSupportedContent'>
+          <ul className='navbar-nav mr-auto'>
+            <li className='nav-item active'>
+              <NavLink className='nav-link' exact to = '/'>Products<span className='sr-only'>(current)</span></NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to = '/cart'>Cart</NavLink>
+            </li>
+            <li className='nav-item'>
+              <NavLink className='nav-link' to = '/addproduct'>Add Product</NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
     )
   }
 }

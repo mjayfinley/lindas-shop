@@ -19,33 +19,48 @@ class Cart extends Component {
 
     let cartList = this.props.cart.map((product, index) => {
       return (
-        <li key={index}>
-          <h2>{product.product_name}</h2>
-          <p>${product.price}</p>
-          <button onClick={() =>  {this.props.onDeleteItem(product); this.props.deleteFrontEnd(product)}}>Delete Item</button>
-        </li>
+        <div className='table-responsive'>
+          <table className='table table-striped table-bordered'>
+            <thead className='thead-dark'>
+              <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Delete Item</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr key={index}>
+
+              <td className='table-second-column'>{product.product_name}</td>
+              <td className='table-third-column'>${product.price}</td>
+              <td className='table-fourth-column' ><button onClick={() =>  {this.props.onDeleteItem(product); this.props.deleteFrontEnd(product)}}>Delete Item</button></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
       )
     })
     return(
       <div>
-        <h1>Cart</h1>
+        <h1>Your Cart</h1>
+        <div className='row'>
 
-        <ul>{cartList}</ul>
+          <div className='col-md-9'>
+            {cartList}
+            <div>Total Items: {this.props.cartCount}</div>
 
-        <div>
-          Total Items: {this.props.cartCount}
-        </div>
-        <div>
-          Cart Total: ${this.props.total}
-        </div>
+            <div>Cart Total: ${this.props.total}</div>
+          </div>
 
-        <div>
-          <Payment />
-        </div>
 
-        <div>
-          <button><Link to = '/'>Continue Shopping</Link></button>
 
+
+          <div className='col-md-3'>
+            <Payment />
+
+            <Link to = '/' className='btn btn-info'>Continue Shopping</Link>
+
+          </div>
         </div>
 
       </div>

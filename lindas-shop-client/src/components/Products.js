@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 import * as actionCreators from '../store/actionCreators'
 
 import Sidebar from './Sidebar'
-import Categories from './Categories'
+
 
 
 class Products extends Component {
@@ -22,29 +22,29 @@ class Products extends Component {
 
     let productList = this.props.products.map((product) => {
       return (
-        <div key={product.id}>
-          <div>
-            <img src={product.image1} alt="1" />
-            <div>
-              <h4 >${product.price}</h4>
-              <h4>{product.product_name}</h4>
-              <button onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`}>Details</Link></button>
-              <button onClick={() => {this.props.addToCart(product); this.props.addToCartFrontEnd(product)}}>Quick Add</button>
+        <div className='card' key={product.id}>
+            <img className='card-img-top' src={product.image1} alt="1" />
+            <div className='card-body'>
+              <h4 className='card-title' >{product.product_name}</h4>
+              <h5 className='card-title'>${product.price}</h5>
+              <button type='button' className='btn btn-lg btn-outline-secondary' onClick={() => {this.props.showProductDetails(product)}}><Link to = {`/itemdetails/${product.id}`} className='details-link'>Details</Link></button>
+              <button className='btn btn-lg btn-primary' onClick={() => {this.props.addToCart(product); this.props.addToCartFrontEnd(product)}}>Quick Buy</button>
             </div>
-          </div>
         </div>
       )
     })
 
 
     return(
-      <div>
-        <div>
+      <div className='row'>
+
+        <div className='col-md-3'>
           <Sidebar />
-          <Categories />
         </div>
-        <div>
+        <div className='col-md-9'>
+          <div className='card-columns'>
           {productList}
+          </div>
         </div>
       </div>
     )
