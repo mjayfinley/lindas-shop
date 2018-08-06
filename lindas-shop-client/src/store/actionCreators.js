@@ -25,7 +25,8 @@ export const addProductUsingThunk = (product) => {
     .then(response => response.json())
     .then((json) => {
       dispatch({type : actionTypes.ADD_PRODUCT, product : json})
-    
+      alert("Item added!")
+      
     })
   }
 }

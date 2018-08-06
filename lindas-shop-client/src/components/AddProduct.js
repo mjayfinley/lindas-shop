@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 
 
 import * as actionCreators from '../store/actionCreators'
@@ -77,7 +78,7 @@ class AddProduct extends Component {
 
 
 
-        <button className='btn btn-primary' onClick={() => {this.props.onSaveProduct(this.state.product)}}>Add Product</button>
+        <button className='btn btn-primary' onClick={() => {this.props.onSaveProduct(this.state.product)}}><Link to='/' className='btn btn-primary'>Add Product</Link></button>
       </div>
 
     )

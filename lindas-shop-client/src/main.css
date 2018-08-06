@@ -43,13 +43,10 @@
 
 
 .sidenav {
-  @include media-breakpoint-only(lg) {
-    position: fixed;
-    width: 250px;
-  }
-  @include media-breakpoint-only(sm) {
-    position: relative;
-  }
+  width: 250px;
+  position: fixed;
+  margin-left: 10px;
+  margin-top: 50px;
 
 }
 
