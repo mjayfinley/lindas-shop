@@ -61,7 +61,7 @@ class ItemDetails extends Component {
           {listItem}
         </div>
         <div className='col-md-3'>
-          <button className='btn btn-success btn-block' onClick={() => {this.props.addToCart(this.props.item[0])}}>Add to Cart</button>
+          <button className='btn btn-success btn-block' onClick={() => {this.props.addToCart(this.props.item[0]); this.props.addToCartFrontEnd(this.props.item[0])}}>Add to Cart</button>
           <Link to = '/'className='btn btn-info btn-block'>Continue Shopping</Link>
         </div>
       </div>
@@ -77,8 +77,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addToCart : (product) => dispatch(actionCreators.addToCart(product))
+    addToCart : (product) => dispatch(actionCreators.addToCart(product)),
 
+    addToCartFrontEnd : (product) => dispatch(actionCreators.addToCartFrontEnd(product))
   }
 }
 
